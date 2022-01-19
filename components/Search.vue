@@ -3073,5 +3073,18 @@ li img{
     padding: 0;
      left: 0;
   }
+  li{
+      width: 100%;
+  }
+  .sort-search-bar{
+      flex-wrap: wrap;
+  }
+  .sort-search-bar button{
+      width: calc(33% - 8px);
+      margin: 4px;
+  }
+  .toggled{
+  transform: translateY(-800px);
+}
   }
 </style>
