@@ -2956,6 +2956,7 @@ ul{
   transform: translateY(0px);
   transition: .5s;
   background-color: rgb(53,57,65);
+  min-height: 100vh;
 }
 .toggled{
   transform: translateY(-530px);
