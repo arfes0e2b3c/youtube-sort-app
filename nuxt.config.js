@@ -46,5 +46,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  env: {
+    MICROCMS_KEY: process.env.MICROCMS_KEY || ''
   }
 }
