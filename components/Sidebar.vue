@@ -2,11 +2,11 @@
   <div class="sidebar">
     <ul>
       <li class="logo">
-        <!-- <i class="fab fa-youtube"></i> -->
+        <i class="fab fa-youtube"></i>
         <p>YouTubeAPI</p>
       </li>
       <li v-for="list in lists" :key="list.id" class="li-hover">
-        <!-- <i :class="list.i"></i> -->
+        <i :class="list.i"></i>
         <p>{{ list.title }}</p>
       </li>
     </ul>

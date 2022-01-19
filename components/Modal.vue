@@ -3,7 +3,7 @@
     <div class="background" @click="closeModal"></div>
      <div class="container" :class="{expand: isExpand}">
     <div class="icon-circle" @click="expandModal">
-      <!-- <i class="fas fa-arrows-alt-h"></i> -->
+      <i class="fas fa-arrows-alt-h"></i>
     </div>
     <div class="img-box">
       <img :src="modalVideo.snippet.thumbnails.high.url" alt="">

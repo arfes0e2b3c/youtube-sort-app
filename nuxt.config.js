@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'dummy',
+    title: 'youtube-sort-app',
     htmlAttrs: {
       lang: 'en'
     },

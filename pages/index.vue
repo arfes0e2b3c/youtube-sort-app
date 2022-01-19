@@ -2,7 +2,7 @@
   <div class="background">
     <Sidebar />
     <Search class="search" />
-    <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </div>
 </template>
 <style scoped>

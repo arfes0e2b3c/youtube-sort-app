@@ -5,7 +5,7 @@
     <SearchChannel v-show="isSearchChannelShow" @closeSearchChannel="closeSearchChannel" @setChannelId="setChannelId"/>
     <div class="sort-search-bar">
       <button class="search-toggle-button" @click="toggleSearchList">検索する
-          <!-- <i class="fas fa-chevron-down" :class="{rotate: isRotate}"></i> -->
+          <i class="fas fa-chevron-down" :class="{rotate: isRotate}"></i>
       </button>
       <div class="divider"></div>
       <button
