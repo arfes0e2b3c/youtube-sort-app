@@ -2766,6 +2766,7 @@ export default({
   },
   async mounted() {
       let that = this
+      const MICROCMS_KEY = process.env.MICROCMS_KEY
       await this.$axios.$get('https://typing.microcms.io/api/v1/youtube-sort-key', {
         headers: { 'X-MICROCMS-API-KEY': MICROCMS_KEY}
       }).then(function(response) {
