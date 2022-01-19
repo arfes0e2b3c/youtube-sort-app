@@ -2,7 +2,7 @@
   <div class="container">
     <h1>検索</h1>
     <Modal :modalVideo="modalVideo" v-show="isModalShow" @closeModal="closeModal"/>
-    <SearchChannel v-show="isSearchChannelShow" @closeSearchChannel="closeSearchChannel" @setChannelId="setChannelId"/>
+    <SearchChannel v-show="isSearchChannelShow" :YouTubeKey="YouTubeKey" @closeSearchChannel="closeSearchChannel" @setChannelId="setChannelId"/>
     <div class="sort-search-bar">
       <button class="search-toggle-button" @click="toggleSearchList">検索する
           <i class="fas fa-chevron-down" :class="{rotate: isRotate}"></i>
@@ -69,7 +69,7 @@ export default({
   },
   data() {
     return {
-      microCMSKey: '',
+      YouTubeKey: '',
       ja: ja,
       modalVideo: {
         "kind": "",
@@ -2634,10 +2634,8 @@ export default({
         }).catch(function(error) {
           console.log('ERROR!')
         }).then(function(response) {
-          console.log(response)
           that.videoIds[i] = {...response.items[0], ...that.videoIds[i]}
         })
-        console.log(that.videoIds)
         await this.$axios.$get
         (url + 'videos', {
           params:{
@@ -2770,7 +2768,7 @@ export default({
       await this.$axios.$get('https://typing.microcms.io/api/v1/youtube-sort-key', {
         headers: { 'X-MICROCMS-API-KEY': MICROCMS_KEY}
       }).then(function(response) {
-          that.microCMSKey = response.contents[0].key
+          that.YouTubeKey = response.contents[0].key
           that.selectedParams.key = response.contents[0].key
       })
   }

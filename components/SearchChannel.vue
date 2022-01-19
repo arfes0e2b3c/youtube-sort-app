@@ -115,11 +115,15 @@ li p{
 </style>
 <script>
 export default {
+  props: {
+    YouTubeKey:{
+      type: String
+    }
+  },
   methods:{
     async fetchChannel({ $axios }) {
       const url = "https://www.googleapis.com/youtube/v3/"
       const that = this
-      const key = 'AIzaSyDQJVohnAdT4O7QSlQ0PjOy5A0Ra3oYFho'
       for(let i in that.selectedParams) {
           if(!that.selectedParams[i]) {
               delete that.selectedParams[i]
@@ -128,7 +132,7 @@ export default {
       await this.$axios.$get
         (url + 'search', {
           params: {
-            key: key,
+            key: that.YouTubeKey,
             part: 'snippet',
             q: this.q,
             maxResults: 50,
