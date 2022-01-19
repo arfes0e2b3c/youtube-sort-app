@@ -60,6 +60,11 @@ li i{
   font-size: 1.3em;
   margin: 0;
 }
+@media(max-width: 800px){
+  .sidebar{
+    display: none;
+  }
+}
 </style>
 <script>
 export default {

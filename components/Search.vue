@@ -3066,4 +3066,12 @@ li img{
     margin: 10px 0.8%;
 }
   }
+@media(max-width: 800px) {
+  .container{
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+     left: 0;
+  }
+  }
 </style>
