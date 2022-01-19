@@ -135,16 +135,6 @@ export default({
               ]
           },
           {
-              title:'検索ジャンル',
-              name: 'type',
-              items: [
-                  {label:'全て',value: '',selected:true},
-                  {label:'チャンネル',value: 'channel',selected:false},
-                  {label:'動画',value: 'video',selected:false},
-                  {label:'プレイリスト',value: 'playlist',selected:false}
-              ]
-          },
-          {
               title:'検索タイプ',
               name: 'eventType',
               items: [
@@ -189,7 +179,7 @@ export default({
         q: '',
         maxResults: '50',
         order: 'relevance',
-        type: '',
+        type: 'video',
         eventType: '',
         videoCaption: 'any',
         videoDimension: 'any',
@@ -2639,8 +2629,7 @@ export default({
           params:{
             part: 'statistics',
             key: that.microCMSKey,
-            id: that.videoIds[i].id.videoId,
-            maxResults: 1
+            id: that.videoIds[i].id.videoId
           }
         }).catch(function(error) {
           console.log('ERROR!')
@@ -2654,13 +2643,12 @@ export default({
           params:{
             part: 'contentDetails',
             key: that.microCMSKey,
-            id: that.videoIds[i].id.videoId,
-            maxResults: 1
+            id: that.videoIds[i].id.videoId
           }
         }).catch(function(error) {
           console.log('ERROR!')
         }).then(function(response) {
-          that.videoIds[i].snippet.omittedTitle = that.omitTitle(that.videoIds[i].snippet.title)
+          that.videoIds[i].snippet.omittedTitle = that.omitTitle(that.videoIds[i].snippet.title).split('&amp;').join('&')
           response.items[0].contentDetails.duration = that.modifyISO(response.items[0].contentDetails.duration)
           that.videos.push({...that.videoIds[i], ...response.items[0]})
         })
@@ -2970,7 +2958,7 @@ ul{
   background-color: rgb(53,57,65);
 }
 .toggled{
-  transform: translateY(-580px);
+  transform: translateY(-530px);
 }
 li{
   position: relative;
