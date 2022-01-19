@@ -20,6 +20,7 @@
     <div class="search-list">
         <div class="search-genre-inputs">
             <input type="text" v-model="selectedParams.q" placeholder="検索語句">
+            <input type="text" v-model="pass" placeholder="パスワード">
             <!-- <input type="text" v-model="selectedParams.maxResults" placeholder="表示件数(最大50件)"> -->
         </div>
         <div class="date-pickers">
@@ -69,6 +70,7 @@ export default({
   },
   data() {
     return {
+      pass: '',
       YouTubeKey: '',
       ja: ja,
       modalVideo: {
@@ -2607,50 +2609,54 @@ export default({
   },
   methods:{
     async fetchVideo({ $axios }) {
-      this.AllSortButtonOff()
-      this.toggleSearchList()
-      this.modifySelectedParams()
-      const url = "https://www.googleapis.com/youtube/v3/"
-      const that = this
-    //   const key = that.keys[Math.floor(Math.random() * this.keys.length)]
-      await this.$axios.$get
-        (url + 'search', {
-          params: this.selectedParams
-        }).catch(function(error) {
-          console.log('ERROR!')
-        }).then(function(response) {
-          that.videoIds = response.items
-          that.videos = []
-        })
-      for (let i = 0; i < that.videoIds.length; i++) {
-        that.videoIds[i].videoId = that.videoIds[i].id.videoId
-        await this.$axios.$get
-        (url + 'videos', {
-          params:{
-            part: 'statistics',
-            key: that.YouTubeKey,
-            id: that.videoIds[i].id.videoId
-          }
-        }).catch(function(error) {
-          console.log('ERROR!')
-        }).then(function(response) {
-          that.videoIds[i] = {...response.items[0], ...that.videoIds[i]}
-        })
-        await this.$axios.$get
-        (url + 'videos', {
-          params:{
-            part: 'contentDetails',
-            key: that.YouTubeKey,
-            id: that.videoIds[i].id.videoId
-          }
-        }).catch(function(error) {
-          console.log('ERROR!')
-        }).then(function(response) {
-          that.videoIds[i].snippet.omittedTitle = that.omitTitle(that.videoIds[i].snippet.title).split('&amp;').join('&')
-          response.items[0].contentDetails.duration = that.modifyISO(response.items[0].contentDetails.duration)
-          that.videos.push({...that.videoIds[i], ...response.items[0]})
-        })
-      }
+      if(this.pass === 'pass') {
+        this.AllSortButtonOff()
+        this.toggleSearchList()
+        this.modifySelectedParams()
+        const url = "https://www.googleapis.com/youtube/v3/"
+        const that = this
+        //   const key = that.keys[Math.floor(Math.random() * this.keys.length)]
+         await this.$axios.$get
+          (url + 'search', {
+            params: this.selectedParams
+            }).catch(function(error) {
+                console.log('ERROR!')
+            }).then(function(response) {
+                that.videoIds = response.items
+            that.videos = []
+            })
+        for (let i = 0; i < that.videoIds.length; i++) {
+            that.videoIds[i].videoId = that.videoIds[i].id.videoId
+            await this.$axios.$get
+            (url + 'videos', {
+                params:{
+                    part: 'statistics',
+                key: that.YouTubeKey,
+                id: that.videoIds[i].id.videoId
+            }
+            }).catch(function(error) {
+                console.log('ERROR!')
+            }).then(function(response) {
+            that.videoIds[i] = {...response.items[0], ...that.videoIds[i]}
+            })
+            await this.$axios.$get
+            (url + 'videos', {
+                params:{
+                    part: 'contentDetails',
+                key: that.YouTubeKey,
+                id: that.videoIds[i].id.videoId
+            }
+            }).catch(function(error) {
+                console.log('ERROR!')
+            }).then(function(response) {
+                that.videoIds[i].snippet.omittedTitle = that.omitTitle(that.videoIds[i].snippet.title).split('&amp;').join('&')
+            response.items[0].contentDetails.duration = that.modifyISO(response.items[0].contentDetails.duration)
+            that.videos.push({...that.videoIds[i], ...response.items[0]})
+            })
+        }
+     }else{
+         console.log('wrong pass!')
+     }
     },
     omitTitle(title) {
         if(title.length > 30) {
@@ -2958,7 +2964,7 @@ ul{
   min-height: 100vh;
 }
 .toggled{
-  transform: translateY(-530px);
+  transform: translateY(-590px);
 }
 li{
   position: relative;
