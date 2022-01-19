@@ -2625,7 +2625,7 @@ export default({
     //   const key = that.keys[Math.floor(Math.random() * this.keys.length)]
       await this.$axios.$get
         (url + 'search', {
-        //   params: this.selectedParams
+          params: this.selectedParams
         }).catch(function(error) {
           console.log('ERROR!')
         }).then(function(response) {
@@ -2638,7 +2638,7 @@ export default({
         (url + 'videos', {
           params:{
             part: 'statistics',
-            key: this.microCMSKey,
+            key: that.microCMSKey,
             id: that.videoIds[i].id.videoId,
             maxResults: 1
           }
@@ -2648,7 +2648,7 @@ export default({
           console.log(response)
           that.videoIds[i] = {...response.items[0], ...that.videoIds[i]}
         })
-        // console.log(that.videoIds)
+        console.log(that.videoIds)
         await this.$axios.$get
         (url + 'videos', {
           params:{
