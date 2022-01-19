@@ -2628,7 +2628,7 @@ export default({
         (url + 'videos', {
           params:{
             part: 'statistics',
-            key: that.microCMSKey,
+            key: that.YouTubeKey,
             id: that.videoIds[i].id.videoId
           }
         }).catch(function(error) {
@@ -2640,7 +2640,7 @@ export default({
         (url + 'videos', {
           params:{
             part: 'contentDetails',
-            key: that.microCMSKey,
+            key: that.YouTubeKey,
             id: that.videoIds[i].id.videoId
           }
         }).catch(function(error) {
