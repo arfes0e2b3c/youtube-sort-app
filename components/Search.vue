@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>検索</h1>
+    <h1>動画検索</h1>
     <Modal :modalVideo="modalVideo" v-show="isModalShow" @closeModal="closeModal"/>
     <SearchChannel v-show="isSearchChannelShow" :YouTubeKey="YouTubeKey" @closeSearchChannel="closeSearchChannel" @setChannelId="setChannelId"/>
     <div class="sort-search-bar">
@@ -2788,7 +2788,6 @@ export default({
   position: absolute;
   top: 0;
   left: 15%;
-  overflow: scroll;
 }
 .sort-search-bar{
   width: 100%;

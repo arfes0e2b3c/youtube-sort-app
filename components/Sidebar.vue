@@ -71,7 +71,7 @@ export default {
   data(){
     return{
       lists:[
-        { title: '検索', i: 'fas fa-search', id:1 },
+        { title: '動画検索', i: 'fas fa-search', id:1 },
         { title: '登録チャンネル', i: 'fas fa-video', id:2 },
         { title: '再生リスト', i: 'fas fa-list', id:3 }
       ]
