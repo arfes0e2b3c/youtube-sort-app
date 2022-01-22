@@ -3058,6 +3058,7 @@ li img{
 @media(max-width: 1500px) {
   .container{
     left: 225px;
+    overflow-x: hidden;
   }
   li{
     width: calc(100% / 3 - 1.6%);
@@ -3070,7 +3071,7 @@ li img{
     width: 100%;
     max-width: 100%;
     padding: 0;
-     left: 0;
+    left: 0;
   }
   li{
       width: 100%;
