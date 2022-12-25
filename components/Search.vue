@@ -30,7 +30,11 @@
     <div class="search-list">
       <div class="search-genre-inputs">
         <input type="text" v-model="selectedParams.q" placeholder="検索語句" />
-        <input type="text" v-model="pass" placeholder="パスワード" />
+        <input
+          type="text"
+          v-model="pass"
+          placeholder="パスワード(空欄で大丈夫です)"
+        />
         <!-- <input type="text" v-model="selectedParams.maxResults" placeholder="表示件数(最大50件)"> -->
       </div>
       <div class="date-pickers">
@@ -2824,7 +2828,9 @@ export default {
   },
   methods: {
     async fetchVideo({ $axios }) {
-      if (this.pass === "pass") {
+      // if (this.pass === "pass") {
+      // 一旦無しにしておく
+      if (true) {
         this.AllSortButtonOff();
         this.toggleSearchList();
         this.modifySelectedParams();
