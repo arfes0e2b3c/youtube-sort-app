@@ -3008,16 +3008,8 @@ export default {
     },
   },
   async mounted() {
-    let that = this;
-    const MICROCMS_KEY = process.env.MICROCMS_KEY;
-    await this.$axios
-      .$get("https://typing.microcms.io/api/v1/youtube-sort-key", {
-        headers: { "X-MICROCMS-API-KEY": MICROCMS_KEY },
-      })
-      .then(function (response) {
-        that.YouTubeKey = response.contents[0].key;
-        that.selectedParams.key = response.contents[0].key;
-      });
+    this.YouTubeKey = process.env.YOUTUBE_KEY;
+    this.selectedParams.key = process.env.YOUTUBE_KEY;
   },
 };
 </script>
